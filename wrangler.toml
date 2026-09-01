@@ -1,0 +1,24 @@
+name = "disposable-email-bot"
+main = "src/worker.js"
+compatibility_date = "2026-01-15"
+compatibility_flags = ["nodejs_compat"]
+
+workers_dev = false
+
+# Where the Worker is served. wrangler creates the DNS record and the certificate.
+[[routes]]
+pattern = "mail.example.com"
+custom_domain = true
+
+[vars]
+# Your domain on Cloudflare. Addresses look like k7m2q9x1a3@DOMAIN.
+DOMAIN = "example.com"
+# Public URL of the Worker: used for the buttons and the "open full mail" page.
+PUBLIC_BASE = "https://mail.example.com"
+
+# Filled in by setup.sh on first run.
+[[kv_namespaces]]
+binding = "MAIL"
+id = "PUT_KV_ID_HERE"
+
+# Secrets never go here: wrangler secret put BOT_TOKEN / OWNER_ID / WEBHOOK_SECRET

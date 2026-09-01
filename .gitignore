@@ -1,0 +1,9 @@
+node_modules/
+.wrangler/
+.DS_Store
+
+# Never commit credentials. Secrets live in Cloudflare (wrangler secret put);
+# .dev.vars is wrangler's local equivalent and must stay local.
+.dev.vars
+.env
+.env.*
